@@ -1,14 +1,12 @@
 import numpy as np
 import pandas as pd
-import torchvision
-import torch.nn as nn
 from tqdm import tqdm
 from PIL import Image, ImageFile
 from torch.utils.data import Dataset
 import torch
 from torchvision import transforms
 import os
-from model import DRModel
+from pytorch.model import DRModel
 device = torch.device("cuda:0")
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 model = DRModel(device)

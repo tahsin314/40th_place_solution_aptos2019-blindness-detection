@@ -2,21 +2,12 @@ import sys
 
 import torch
 from torch import optim, nn
-from torch.optim import lr_scheduler
 from torchvision import transforms
-from albumentations import (ToFloat,
-    CLAHE, RandomRotate90, Transpose, ShiftScaleRotate, Blur, OpticalDistortion,
-    GridDistortion, HueSaturationValue, IAAAdditiveGaussianNoise, GaussNoise, MotionBlur,
-    MedianBlur, IAAPiecewiseAffine, IAASharpen, IAAEmboss, RandomContrast, RandomBrightness,
-    Flip, OneOf, Compose
-)
-from albumentations.augmentations.transforms import Resize, Normalize
-from albumentations.augmentations.transforms import HorizontalFlip, Rotate, RandomBrightnessContrast, RandomScale
-from DRDataset import DRDatasetAlbumentation, DRDataset
-from model import DRModel
-from cyclic_lr import cyclical_lr, get_lr, triangular_lr, set_lr
-from kappa import quadratic_kappa
-from logger import logger
+from pytorch.DRDataset import DRDataset
+from pytorch.model import DRModel
+from pytorch.cyclic_lr import get_lr, triangular_lr, set_lr
+from pytorch.kappa import quadratic_kappa
+from pytorch.logger import logger
 import os
 import numpy as np
 import pandas as pd
