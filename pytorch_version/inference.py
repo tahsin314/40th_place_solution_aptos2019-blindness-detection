@@ -24,6 +24,7 @@ for param in model.parameters():
 
 model.eval()
 
+
 class RetinopathyDatasetTest(Dataset):
     def __init__(self, csv_file, dim, transform):
         self.data = pd.read_csv(csv_file)
@@ -40,7 +41,8 @@ class RetinopathyDatasetTest(Dataset):
         image = self.transform(image)
         return {'image': image}
 
-test_dataset = RetinopathyDatasetTest('data/sample_submission.csv', 128, transform)
+
+test_dataset = RetinopathyDatasetTest('data/new_data/sample_submission.csv', 256, transform)
 test_data_loader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=0)
 test_preds = np.zeros((len(test_dataset), 1))
 tk0 = tqdm(test_data_loader)
