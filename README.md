@@ -58,20 +58,9 @@ Here is the summary of my final models and their ensemble scores:
   -  You can experiment with `albumentations` augmentations by using `DRDatasetAlbumentation` as your Dataset class.
   - The code monitors both `val_loss` and `kappa` scores and saves model based on them. In my experience, `kappa` score is unstable and often doesn't
   seem to be correlated with `val_loss`. The safe option here is to choose and save your model based on the `val_loss` only.
-   
-### Steps
 
-- [x] Cross Validation
-- [x] Learning Rate Finder
-- [x] Data Augmentation (Write custom tranform classes)
-  * Flip(Horizontal and Vertical)
-  * Rotate
-  * Zoom
-  * Warp
-  * Lightning
-  * Symmetric Warp (Optional)
-- [x] Cyclic Learning Rate ()
-- [ ] Implement *Kappa* and *Focal Loss* (If possible)
-- [ ] TTA (Will not be practical since it will take too much time to generate prediction
-during submission)
-- [ ] Explore multi-label classification
+### Fastai
+- **Steps**
+
+
+**Will be added soon**
