@@ -3,11 +3,11 @@ import sys
 import torch
 from torch import optim, nn
 from torchvision import transforms
-from pytorch.DRDataset import DRDataset
-from pytorch.model import DRModel
-from pytorch.cyclic_lr import get_lr, triangular_lr, set_lr
-from pytorch.kappa import quadratic_kappa
-from pytorch.logger import logger
+from pytorch_version.DRDataset import DRDataset
+from pytorch_version.model import DRModel
+from pytorch_version.cyclic_lr import get_lr, triangular_lr, set_lr
+from pytorch_version.kappa import quadratic_kappa
+from pytorch_version.logger import logger
 import os
 import numpy as np
 import pandas as pd
@@ -23,9 +23,9 @@ else:
 
 device = torch.device("cuda:0")
 batch_size = 48
-dim = 64
+dim = 256
 num_fold = 5
-epochs = 6
+epochs = 10
 step_size = 4*int(len(os.listdir('data/new_data/train_images'))*(1.-1/num_fold)/batch_size)
 model_dir = 'resnet101_mse_dim_64'
 model = DRModel(device)
@@ -121,7 +121,7 @@ def eval(val_list, transformer):
     predictions = []
     actual_labels = []
     val_dataset = DRDataset('data/new_data/train.csv', val_list, dim, transformer)
-    val_data_loader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size//2, shuffle=True, num_workers=0)
+    val_data_loader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size//2, shuffle=True, num_workers=num_worker)
     model.eval()
     for data, labels in T(val_data_loader):
         labels = labels.view(-1, 1)

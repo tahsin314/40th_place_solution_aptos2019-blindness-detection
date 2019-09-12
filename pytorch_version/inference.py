@@ -6,7 +6,7 @@ from torch.utils.data import Dataset
 import torch
 from torchvision import transforms
 import os
-from pytorch.model import DRModel
+from pytorch_version.model import DRModel
 device = torch.device("cuda:0")
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 model = DRModel(device)

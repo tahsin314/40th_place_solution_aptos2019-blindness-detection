@@ -5,9 +5,9 @@ from torch import optim, nn
 import pandas as pd
 from torchvision import transforms
 
-from pytorch.lr_finder import LRFinder
-from pytorch.model import DRModel
-from pytorch.DRDataset import DRDataset
+from pytorch_version.lr_finder import LRFinder
+from pytorch_version.model import DRModel
+from pytorch_version.DRDataset import DRDataset
 device = torch.device("cuda:0")
 model = DRModel(device)
 df = pd.read_csv('data/train.csv')
