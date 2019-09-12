@@ -3,8 +3,8 @@ Aravind Eye Hospital in India provided a large set of retina images taken using 
 The task of this competition was to train DNN that can detect the level of severity.
 
 ### Our approach
-We treated the task as a regression problem. We experimented with several Resnet, SE-Resnet, Resnet, ResNext and SE-Resnext model until
-we found out that [Efficientnet](https://arxiv.org/abs/1905.11946) model performs better than most
+I treated the task as a regression problem. I experimented with several Resnet, SE-Resnet, Resnet, ResNext and SE-Resnext model until
+I found out that [Efficientnet](https://arxiv.org/abs/1905.11946) model performs better than most
 of the pretrained models in this competition. Our final silver winning solution was an ensemble of 5 different
 Efficientnet models. Here is an overview:
 
@@ -17,6 +17,20 @@ I wrote a `pytorch` and a `fastai` version of my codes for the competition.
 **I mostly used my `fastai` codes throughout the competition. It requires a lot of work to cleanup my 
 codes and add a detailed explanation of my workflow. I guess I will keep updating this repo.** 
 
+### Approaches That Didn't Work For Me
+Classification and Ordinal Regression didn't work out in my case.
+
+### Scores (TL;DR)
+Here is the summary of my final models and their ensemble scores: 
+
+| Model           | Image Size | Val Kappa | Public Kappa | Private Kappa |
+|-----------------|------------|-----------|--------------|---------------|
+| Efficientnet B2 | 256        | 0\.922    | 0\.807       | 0\.918        |
+| Efficientnet B1 | 256        | 0\.926    | 0\.804       | 0\.921        |
+| Efficientnet B0 | 256        | 0\.919    | 0\.816       | 0\.914        |
+| Efficientnet B3 | 256        | 0\.921    | 0\.812       | 0\.917        |
+| Efficientnet B5 | 300        | 0\.920     | 0\.802       | 0\.916        |
+| Ensemble        | ----      | 0\.932    | 0\.826       | 0\.926        |
  
 ### Resources 
 - Competition [Link](https://www.kaggle.com/c/aptos2019-blindness-detection)
