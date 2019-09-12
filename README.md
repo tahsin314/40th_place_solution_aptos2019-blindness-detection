@@ -1,4 +1,4 @@
-# Aptos 2019 Blindness Detection: 37th Place Solution
+# Aptos 2019 Blindness Detection: 37th Place Solution (Updated)
 Aravind Eye Hospital in India provided a large set of retina images taken using fundus photography under a variety of imaging conditions. A clinician has rated each image for the severity of diabetic retinopathy on a scale of 0 to 4.
 The task of this competition was to train a network that can detect the level of severity.
 
