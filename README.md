@@ -1,9 +1,9 @@
 # Aptos 2019 Blindness Detection: 37th Place Solution
 Aravind Eye Hospital in India provided a large set of retina images taken using fundus photography under a variety of imaging conditions. A clinician has rated each image for the severity of diabetic retinopathy on a scale of 0 to 4.
-The task of this competition was to train DNN that can detect the level of severity.
+The task of this competition was to train a network that can detect the level of severity.
 
 ### Our approach
-I treated the task as a regression problem. I experimented with several Resnet, SE-Resnet, Resnet, ResNext and SE-Resnext model until
+I treated the task as a regression problem. I experimented with several Resnet, SE-Resnet, Resnet, ResNext and SE-Resnext models until
 I found out that [Efficientnet](https://arxiv.org/abs/1905.11946) model performs better than most
 of the pretrained models in this competition. Our final silver winning solution was an ensemble of 5 different
 Efficientnet models. Here is an overview:
@@ -18,7 +18,7 @@ I wrote a `pytorch` and a `fastai` version of my codes for the competition.
 codes and add a detailed explanation of my workflow. I guess I will keep updating this repo.** 
 
 ### Approaches That Didn't Work For Me
-Classification and Ordinal Regression didn't work out in my case.
+Classification and Ordinal Regression 
 
 ### Scores (TL;DR)
 Here is the summary of my final models and their ensemble scores: 
