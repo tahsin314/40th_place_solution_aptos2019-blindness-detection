@@ -14,7 +14,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 class DRDataset(Dataset):
     def __init__(self, csv_file, idx_list, dim, transformer):
         super(Dataset, self).__init__()
-        # print('Dataset')
+        # print('../dataset')
         self.idx_list = idx_list
         df = pd.read_csv(csv_file)
         self.data = df
@@ -25,7 +25,7 @@ class DRDataset(Dataset):
         return len(self.idx_list)
 
     def __getitem__(self, item):
-        img_name = os.path.join('data/new_data/train_images',
+        img_name = os.path.join('../data/new_data/train_images',
                                 self.data.loc[self.idx_list[item], 'id_code'] + '.png')
         image = Image.open(img_name)
         image = image.resize((self.dim, self.dim), resample=Image.BILINEAR)
@@ -46,7 +46,7 @@ class DRDatasetAlbumentation(Dataset):
         return len(self.idx_list)
 
     def __getitem__(self, item):
-        img_name = os.path.join('data/new_data/train_images',
+        img_name = os.path.join('../data/new_data/train_images',
                                 self.data.loc[self.idx_list[item], 'id_code'] + '.png')
         image = Image.open(img_name)
         image_np = np.float32(np.asarray(image))

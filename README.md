@@ -54,7 +54,7 @@ Here is the summary of my final models and their ensemble scores:
 - **Steps**
   - Create a directory `data/new_data` and keep the 2019 APTOS competition [data](https://www.kaggle.com/c/aptos2019-blindness-detection/data) there.
   - Run `cyclic_lr.py` and find a suitable learning rate.
-  - Run `train.py`. It will run a 5 fold cross-validation with 10 epochs for each fold.  
+  - Run `cd pytorch_version` and then `train.py`. It will run a 5 fold cross-validation with 10 epochs for each fold.  
   -  You can experiment with `albumentations` augmentations by using `DRDatasetAlbumentation` as your Dataset class.
   - The code monitors both `val_loss` and `kappa` scores and saves model based on them. In my experience, `kappa` score is unstable and often doesn't
   seem to be correlated with `val_loss`. The safe option here is to choose and save your model based on the `val_loss` only.

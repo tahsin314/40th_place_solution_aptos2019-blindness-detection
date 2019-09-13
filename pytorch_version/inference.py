@@ -10,7 +10,7 @@ from pytorch_version.model import DRModel
 device = torch.device("cuda:0")
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 model = DRModel(device)
-checkpt  = torch.load('models/resnet101_mse.pth')
+checkpt = torch.load('models/resnet101_mse.pth')
 transform = transforms.Compose([
     transforms.Resize(128),
     transforms.CenterCrop(128),
@@ -35,14 +35,14 @@ class RetinopathyDatasetTest(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        img_name = os.path.join('data/test_images', self.data.loc[idx, 'id_code'] + '.png')
+        img_name = os.path.join('../data/test_images', self.data.loc[idx, 'id_code'] + '.png')
         image = Image.open(img_name)
         image = image.resize((self.dim, self.dim), resample=Image.BILINEAR)
         image = self.transform(image)
         return {'image': image}
 
 
-test_dataset = RetinopathyDatasetTest('data/new_data/sample_submission.csv', 256, transform)
+test_dataset = RetinopathyDatasetTest('../data/new_data/sample_submission.csv', 256, transform)
 test_data_loader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=0)
 test_preds = np.zeros((len(test_dataset), 1))
 tk0 = tqdm(test_data_loader)

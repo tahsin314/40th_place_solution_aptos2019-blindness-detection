@@ -10,7 +10,7 @@ from pytorch_version.model import DRModel
 from pytorch_version.DRDataset import DRDataset
 device = torch.device("cuda:0")
 model = DRModel(device)
-df = pd.read_csv('data/train.csv')
+df = pd.read_csv('../data/train.csv')
 kf = KFold(n_splits=4)
 batch_size = 10
 dim = 256
@@ -25,7 +25,7 @@ criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=1e-7, weight_decay=1e-2)
 
 for train_df, val_df in kf.split(df):
-    dataset = DRDataset('data/train.csv', train_df, dim, transform)
+    dataset = DRDataset('../data/train.csv', train_df, dim, transform)
     data_loader = torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=0)
     lr_finder = LRFinder(model, optimizer, criterion, device=device)
     lr_finder.range_test(data_loader, end_lr=100, num_iter=300)

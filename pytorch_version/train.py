@@ -3,11 +3,11 @@ import sys
 import torch
 from torch import optim, nn
 from torchvision import transforms
-from pytorch_version.DRDataset import DRDataset
-from pytorch_version.model import DRModel
-from pytorch_version.cyclic_lr import get_lr, triangular_lr, set_lr
-from pytorch_version.kappa import quadratic_kappa
-from pytorch_version.logger import logger
+from DRDataset import DRDataset
+from model import DRModel
+from cyclic_lr import get_lr, triangular_lr, set_lr
+from kappa import quadratic_kappa
+from logger import logger
 import os
 import numpy as np
 import pandas as pd
@@ -26,7 +26,7 @@ batch_size = 48
 dim = 256
 num_fold = 5
 epochs = 10
-step_size = 4*int(len(os.listdir('data/new_data/train_images'))*(1.-1/num_fold)/batch_size)
+step_size = 4*int(len(os.listdir('../data/new_data/train_images'))*(1.-1/num_fold)/batch_size)
 model_dir = 'resnet101_mse_dim_64'
 model = DRModel(device)
 
@@ -65,12 +65,12 @@ def train(transformer, epoch, num_fold):
         pass
 
     kf = KFold(n_splits=num_fold, shuffle=True, random_state=42)
-    df = pd.read_csv('data/new_data/train.csv')
+    df = pd.read_csv('../data/new_data/train.csv')
     for cv_num, (train_list, val_list) in enumerate(kf.split(df)):
         best_qk = 0
         best_loss = np.inf
         for e in T(range(epoch)):
-            train_dataset = DRDataset('data/new_data/train.csv', train_list, dim, transformer)
+            train_dataset = DRDataset('../data/new_data/train.csv', train_list, dim, transformer)
             train_data_loader = torch.utils.data.DataLoader(
                 train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_worker)
             model.train()
@@ -120,7 +120,7 @@ def eval(val_list, transformer):
     running_loss = 0.0
     predictions = []
     actual_labels = []
-    val_dataset = DRDataset('data/new_data/train.csv', val_list, dim, transformer)
+    val_dataset = DRDataset('../data/new_data/train.csv', val_list, dim, transformer)
     val_data_loader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size//2, shuffle=True, num_workers=num_worker)
     model.eval()
     for data, labels in T(val_data_loader):
@@ -140,6 +140,6 @@ def eval(val_list, transformer):
 
 
 kf = KFold(n_splits=num_fold)
-df = pd.read_csv('data/new_data/train.csv')
+df = pd.read_csv('../data/new_data/train.csv')
 train(transform,
     epochs, 5)
