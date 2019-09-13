@@ -60,7 +60,9 @@ Here is the summary of my final models and their ensemble scores:
   seem to be correlated with `val_loss`. The safe option here is to choose and save your model based on the `val_loss` only.
 
 ### Fastai
+The notebook `fastai_version/Blindness_Detection.ipynb` was written for training a model over both 
+`2015` and `2019` datasets. This notebook contains a complete set of instruction and codes from downloading the datasets to train  a model in 2 phases. 
 - **Steps**
-
+  - 
 
 **Will be added soon**
