@@ -1,3 +1,4 @@
+# courtesy: https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy
 import cv2
 from PIL import Image
 import numpy as np
@@ -25,7 +26,7 @@ def crop_image_from_gray(img, tol=7):
         mask = gray_img > tol
 
         check_shape = img[:, :, 0][np.ix_(mask.any(1), mask.any(0))].shape[0]
-        if (check_shape == 0):  # image is too dark so that we crop out everything,
+        if check_shape == 0:  # image is too dark so that we crop out everything,
             return img  # return original image
         else:
             img1 = img[:, :, 0][np.ix_(mask.any(1), mask.any(0))]
